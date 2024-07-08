@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>技术选型调研 - FinClip / UniSDK | 胡飞</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="">
+
+  <link rel="stylesheet" href="https://unpkg.com/lxgw-wenkai-screen-webfont@1.7.0/lxgwwenkaiscreen.css">
+
+  
+  
+<link rel="stylesheet" href="/fonts/sea-font.css">
+
+
+  
+  
+<link rel="stylesheet" href="/css/main.css">
+
+
+  
+  <meta name="description" content="开发微信小程序 → 将微信小程序迁移到自有 App 中 → 某些应用小程序暂时不上架微信，但也需要具备统一的语法与框架，学习与迁移成本不应太高。 微信、百度、阿里这些大厂的小程序容器技术要么不公开，要么太重会接管底层，都不是很合适，市面上能实现 App 跑小程序的也就 FinClip 和 uniapp 比较成熟。 # FinClip## FinClip 核心FinClip 的核心是提供一个小程序容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="技术选型调研 - FinClip &#x2F; UniSDK">
+<meta property="og:url" content="http://example.com/2024/07/06/research-finclip-unisdk/index.html">
+<meta property="og:site_name" content="胡飞">
+<meta property="og:description" content="开发微信小程序 → 将微信小程序迁移到自有 App 中 → 某些应用小程序暂时不上架微信，但也需要具备统一的语法与框架，学习与迁移成本不应太高。 微信、百度、阿里这些大厂的小程序容器技术要么不公开，要么太重会接管底层，都不是很合适，市面上能实现 App 跑小程序的也就 FinClip 和 uniapp 比较成熟。 # FinClip## FinClip 核心FinClip 的核心是提供一个小程序容">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-07-06T09:28:53.000Z">
+<meta property="article:modified_time" content="2024-07-08T15:00:29.872Z">
+<meta property="article:author" content="H.F">
+<meta property="article:tag" content="多端">
+<meta property="article:tag" content="FinClip">
+<meta property="article:tag" content="UniSDK">
+<meta name="twitter:card" content="summary">
+
+  <style>
+    :root {
+      --sea-color-primary: #10b981;
+    }
+  </style>
+
+  
+<script src="/js/global.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+<body>
+  <header class="sea-header">
+    <nav class="sea-nav-wrap">
+  <h1 class="sea-nav-logo" title="移动端软件开发工程师">
+    <a href="/">胡飞</a>
+  </h1>
+  <div class="sea-nav-menus">
+    <div class="sea-menu-pc-wrap">
+  
+    <a
+      class="sea-menu-link"
+      
+      href="/resume/"
+    >
+      🔭 简历
+    </a>
+  
+    <a
+      class="sea-menu-link"
+      
+      href="/categories/"
+    >
+      📑 归档
+    </a>
+  
+    <a
+      class="sea-menu-link"
+      
+      href="/tags/"
+    >
+      🌱 标签
+    </a>
+  
+    <a
+      class="sea-menu-link"
+      
+      href="/nice-tools/"
+    >
+      🍁 高效工具
+    </a>
+  
+    <a
+      class="sea-menu-link"
+      
+      href="/categories/%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/"
+    >
+      🌿 技术选型
+    </a>
+  
+    <a
+      class="sea-menu-link"
+      
+        target="_blank"
+      
+      href="https://github.com/nextcj"
+    >
+      🌾 GitHub
+    </a>
+  
+</div>
+
+    <div id="sea-mobile-nav-toggle">
+      <i class="sea-font">bars</i>
+    </div>
+  </div>
+</nav>
+  </header>
+  <main id="sea-main-wrapper">
+    <article class="sea-page-card-wrapper">
+  <header class="sea-article-header">
+    <h1 class="sea-article-title">技术选型调研 - FinClip / UniSDK</h1>
+    
+      <div class="sea-post-meta sea-post-meta__center">
+        <div class="sea-post-time">
+  <i class="sea-font">date</i>
+  <time datetime="2024-07-06T09:28:53.000Z">2024-07-06</time>
+</div>
+        
+  <div class="sea-post-categories">
+    <i class="sea-font">folder</i>
+    <a class="category-link" href="/categories/%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/">技术选型</a>
+  </div>
+
+        
+  <div class="sea-post-tags">
+    <i class="sea-font">tag</i>
+    <a class="tag-link" href="/tags/FinClip/" rel="tag">FinClip</a> , <a class="tag-link" href="/tags/UniSDK/" rel="tag">UniSDK</a> , <a class="tag-link" href="/tags/%E5%A4%9A%E7%AB%AF/" rel="tag">多端</a>
+  </div>
+
+      </div>
+    
+  </header>
+  <div class="sea-article-content sea-doc">
+    <p>开发微信小程序 → 将微信小程序迁移到自有 App 中 → 某些应用小程序暂时不上架微信，但也需要具备统一的语法与框架，学习与迁移成本不应太高。</p>
+<p>微信、百度、阿里这些大厂的小程序容器技术要么不公开，要么太重会接管底层，都不是很合适，市面上能实现 App 跑小程序的也就 FinClip 和 uniapp 比较成熟。</p>
+<h2 id="FinClip"><a href="#FinClip" class="headerlink" title="# FinClip"></a><font color=#A3CAEB># FinClip</font></h2><h3 id="FinClip-核心"><a href="#FinClip-核心" class="headerlink" title="## FinClip 核心"></a><font color=#A3CAEB>## FinClip 核心</font></h3><p>FinClip 的核心是提供一个小程序容器技术，企业 App 通过集成 FinClip 小程序运行时 SDK，即可将微信小程序上架至自身 APP，让 App 拥有运行小程序的能力，从而实现跨平台：</p>
+<p>1、使用 FinClip，可以在自己的 App 中打造与微信小程序类似的生态，FinClip 提供了小程序容器技术，就够将小程序运行环境集成到 App，从而让 App 具备小程序运行的能力。</p>
+<p>2、使用 FinClip，可以进行模块化开发，真正实现敏捷迭代，把 App 中的业务模块都拆成单独的小程序，各个业务模块之间互相不影响，均可独立更新与发布。</p>
+<p>3、极大的优化了工作效率和产品迭代的效率，多系统、多框架的支持为公司大大节约了跨平台开发的成本。</p>
+<h3 id="FinClip-技术平台"><a href="#FinClip-技术平台" class="headerlink" title="## FinClip 技术平台"></a><font color=#A3CAEB>## FinClip 技术平台</font></h3><p>FinClip 提供多系统框架、多系统支持与开发管理的能力：</p>
+<p>1、FinClip 小程序 SDK 支持纯 WXML 微信小程序运行，也支持包括 uniapp、Taro、kbone 第三方框架集成的小程序。</p>
+<p>2、FinClip 小程序 SDK 同时提供 HarmonyOS、Android、iOS、Flutter、ReactNative、Windows 等多种环境。</p>
+<p>3、FinClip Studio 工具，支持小程序在线编译，同时支持小程序生成 APP，可以将已有小程序代码导出为 iOS 和 Android 中可用的工程文件。</p>
+<p>4、拥有完善的管理平台，小程序开发、测试、上下架、App 集成与联调等流程。</p>
+<p>FinClip SDK 是一个能运行小程序的安全沙箱，通过嵌入 SDK 的形态让移动端软件、PC 端软件与物联网设备软件的宿主环境集成小程序容器。<br>FinClip 管理后台可以理解成一个应用商店，提供应用的发现（陈列、搜索与推荐）机制、上下架与灰度发布的管理后台。<br>使用 FinClip IDE 完成代码编写，使用 FinClip App 完成小程序预览。<br>即使开发者不在应用商店中对 App 进行发版更新，仍然可以更新小程序资源，只要用户安装并打开了 App，就可以根据规则库的配置实现小程序 “千人千面” 的功能。</p>
+<p>总之，FinClip 将 “小程序运行时” 实现成一个可私有化部署的 HarmonyOS、iOS 和 Android 的 SDK，可以被第三方集成。任何 APP 嵌入 FinClip SDK 即可获得运行小程序的能力。<br>FinClip SDK 采用多进程机制实现，每个小程序运行在独立的进程中，即一个小程序对应一个进程。</p>
+<p><a target="_blank" rel="noopener" href="https://www.finclip.com/landpage-car/">https://www.finclip.com/landpage-car/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.finclip.com/solutions/car/">https://www.finclip.com/solutions/car/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.163.com/dy/article/J393B6UN0511B8LM.html">https://www.163.com/dy/article/J393B6UN0511B8LM.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=FinClip%20%E5%BC%80%E5%8F%91%E7%9A%84%E5%85%AC%E5%8F%B8%E6%9C%89%E5%93%AA%E4%BA%9B&fenlei=256&oq=Fin%2526lt%253Blip&rsv_pq=ae9adb190005e6ee&rsv_t=f9f0RqKlS0VbcWzMgYHsd/pfo6X1gJiuGrXBaW//1qB8866d5wLi3q7FUr0&rqlang=cn&rsv_enter=1&rsv_dl=tb&rsv_btype=t&inputT=19451&rsv_sug3=43&rsv_sug1=36&rsv_sug7=100&rsv_sug2=0&rsv_sug4=20729">https://www.baidu.com/s?ie=utf-8&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;tn=baidu&amp;wd=FinClip%20%E5%BC%80%E5%8F%91%E7%9A%84%E5%85%AC%E5%8F%B8%E6%9C%89%E5%93%AA%E4%BA%9B&amp;fenlei=256&amp;oq=Fin%2526lt%253Blip&amp;rsv_pq=ae9adb190005e6ee&amp;rsv_t=f9f0RqKlS0VbcWzMgYHsd%2Fpfo6X1gJiuGrXBaW%2F%2F1qB8866d5wLi3q7FUr0&amp;rqlang=cn&amp;rsv_enter=1&amp;rsv_dl=tb&amp;rsv_btype=t&amp;inputT=19451&amp;rsv_sug3=43&amp;rsv_sug1=36&amp;rsv_sug7=100&amp;rsv_sug2=0&amp;rsv_sug4=20729</a></p>
+<h2 id="UniSDK"><a href="#UniSDK" class="headerlink" title="# UniSDK"></a><font color=#A3CAEB># UniSDK</font></h2><p>UniSDK 也是小程序 SDK，是为原生 App 打造的可运行基于 uni-app 开发的小程序前端项目的框架，从而帮助原生 App 快速获取小程序的能力。<br>uni 小程序 SDK 是原生 SDK，提供 Android 版本和 iOS 版本，需要在原生工程中集成，然后即可运行 uni-app 框架开发的小程序前端项目。</p>
+<p>UniSDK 和 FinClip 类似，提供小程序 SDK 供 App 集成，宿主 App 集成其 SDK 之后就拥有了运用 uni-app 开发的小程序的能力，但是 uni 小程序 SDK 这里没有提供管理端，只提供了 SDK。</p>
+
+  </div>
+
+  
+    
+  <div class="sea-prev-next-wrapper">
+    
+      <div class="prev">
+        <span>←</span>
+        <a class="link" href="/2024/07/08/finclip-car/">
+          FinClip 车载应用
+        </a>
+      </div>
+    
+    
+  </div>
+
+  
+</article>
+
+
+  </main>
+  <footer id="sea-footer-container">
+  <div class="sea-footer-row">
+    <div class="sea-footer-menu-link">
+      
+    </div>
+  </div>
+  
+  
+  <div class="sea-footer-row">
+    <div class="sea-footer-copyright">
+      <span>©</span>
+      
+        2024
+      
+      <span>·</span>
+      H.F
+    </div>
+  </div>
+</footer>
+  <div class="sea-menu-mobile-wrap">
+  <div class="sea-menu-mobile-inner">
+    
+      <a
+        class="sea-menu-link"
+        
+        href="/resume/"
+      >
+        🔭 简历
+      </a>
+    
+      <a
+        class="sea-menu-link"
+        
+        href="/categories/"
+      >
+        📑 归档
+      </a>
+    
+      <a
+        class="sea-menu-link"
+        
+        href="/tags/"
+      >
+        🌱 标签
+      </a>
+    
+      <a
+        class="sea-menu-link"
+        
+        href="/nice-tools/"
+      >
+        🍁 高效工具
+      </a>
+    
+      <a
+        class="sea-menu-link"
+        
+        href="/categories/%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/"
+      >
+        🌿 技术选型
+      </a>
+    
+      <a
+        class="sea-menu-link"
+        
+          target="_blank"
+        
+        href="https://github.com/nextcj"
+      >
+        🌾 GitHub
+      </a>
+    
+  </div>
+</div>
+<div id="sea-mobile-nav-dimmer"></div>
+  <div class="sea-float-tools-wrapper">
+  
+  <a class="sea-float-tools-btn" id="sea-back-to-top" href="#">
+    <i class="sea-font">arrow-up</i>
+  </a>
+
+  
+  
+
+  
+  <div class="sea-float-tools-btn" id="sea-theme-mode">
+    <i class="sea-font">theme</i>
+
+    <ul class="sea-theme-select-box">
+      <li class="sea-theme-select-item" id="sea-theme-auto">System</li>
+      <li class="sea-theme-select-item" id="sea-theme-light">Light</li>
+      <li class="sea-theme-select-item" id="sea-theme-dark">Dark</li>
+    </ul>
+  </div>
+</div>
+
+  
+<script src="/js/theme.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</body>
+</html>
