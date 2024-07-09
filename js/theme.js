@@ -64,15 +64,15 @@ function onThemeChange() {
 
   function setActive(key) {
     switch (key) {
-      case THEME_MODE_AUTO:
-        autoEle.classList.add(THEME_ACTIVE_CLASS);
-        lightEle.classList.remove(THEME_ACTIVE_CLASS);
-        darkEle.classList.remove(THEME_ACTIVE_CLASS);
-        break;
       case THEME_MODE_LIGHT:
-        lightEle.classList.add(THEME_ACTIVE_CLASS);
+        darkEle.classList.add(THEME_ACTIVE_CLASS);
         autoEle.classList.remove(THEME_ACTIVE_CLASS);
-        darkEle.classList.remove(THEME_ACTIVE_CLASS);
+        lightEle.classList.remove(THEME_ACTIVE_CLASS);
+        break;
+      case THEME_MODE_AUTO:
+        darkEle.classList.add(THEME_ACTIVE_CLASS);
+        autoEle.classList.remove(THEME_ACTIVE_CLASS);
+        lightEle.classList.remove(THEME_ACTIVE_CLASS);
         break;
       case THEME_MODE_DARK:
         darkEle.classList.add(THEME_ACTIVE_CLASS);
@@ -90,16 +90,16 @@ function onThemeChange() {
   autoEle.addEventListener('click', function (e) {
     e.preventDefault();
     e.stopPropagation();
-    saveThemeKey(THEME_MODE_AUTO);
-    toggleTheme(THEME_MODE_AUTO, e);
-    setActive(THEME_MODE_AUTO);
+    saveThemeKey(THEME_MODE_DARK);
+    toggleTheme(THEME_MODE_DARK, e);
+    setActive(THEME_MODE_DARK);
   });
   lightEle.addEventListener('click', function (e) {
     e.preventDefault();
     e.stopPropagation();
-    saveThemeKey(THEME_MODE_LIGHT);
-    toggleTheme(THEME_MODE_LIGHT, e);
-    setActive(THEME_MODE_LIGHT);
+    saveThemeKey(THEME_MODE_DARK);
+    toggleTheme(THEME_MODE_DARK, e);
+    setActive(THEME_MODE_DARK);
   });
   darkEle.addEventListener('click', function (e) {
     e.preventDefault();
