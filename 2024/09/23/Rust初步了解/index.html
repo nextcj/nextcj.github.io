@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Rust初步了解 | 博客</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="">
+
+  <link rel="stylesheet" href="https://unpkg.com/lxgw-wenkai-screen-webfont@1.7.0/lxgwwenkaiscreen.css">
+
+  
+  
+<link rel="stylesheet" href="/fonts/sea-font.css">
+
+
+  
+  
+<link rel="stylesheet" href="/css/main.css">
+
+
+  
+  <meta name="description" content="开发环境Rustup 是 Rust 安装器和版本管理工具。官方网站 https:&#x2F;&#x2F;www.rust-lang.org windows 安装 rustup 提示 Rust Visual C++ prerequisites Rust requires a linker and Windows API libraries but they don&#39;t seem to be available.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rust初步了解">
+<meta property="og:url" content="http://example.com/2024/09/23/Rust%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3/index.html">
+<meta property="og:site_name" content="博客">
+<meta property="og:description" content="开发环境Rustup 是 Rust 安装器和版本管理工具。官方网站 https:&#x2F;&#x2F;www.rust-lang.org windows 安装 rustup 提示 Rust Visual C++ prerequisites Rust requires a linker and Windows API libraries but they don&#39;t seem to be available.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-09-23T01:10:12.000Z">
+<meta property="article:modified_time" content="2024-09-25T10:11:11.915Z">
+<meta property="article:author" content="胡飞 | 个人博客 | 温故知新">
+<meta name="twitter:card" content="summary">
+
+  <style>
+    :root {
+      --sea-color-primary: #10b981;
+    }
+  </style>
+
+  
+<script src="/js/global.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+<body>
+  <header class="sea-header">
+    <nav class="sea-nav-wrap">
+  <h1 class="sea-nav-logo" title="胡飞 | 温故知新">
+    <a href="/">博客</a>
+  </h1>
+  <div class="sea-nav-menus">
+    <div class="sea-menu-pc-wrap">
+  
+    <a
+      class="sea-menu-link"
+      
+      href="/categories/web3/"
+    >
+      🌐 Web3.0
+    </a>
+  
+    <a
+      class="sea-menu-link"
+      
+      href="/categories/rust/"
+    >
+      🌾 Rust
+    </a>
+  
+    <a
+      class="sea-menu-link"
+      
+      href="/catalog/"
+    >
+      🌿 其他
+    </a>
+  
+    <a
+      class="sea-menu-link"
+      
+      href="/tags/"
+    >
+      🍁 所有标签
+    </a>
+  
+</div>
+
+    <div id="sea-mobile-nav-toggle">
+      <i class="sea-font">bars</i>
+    </div>
+  </div>
+</nav>
+  </header>
+  <main id="sea-main-wrapper">
+    <article class="sea-page-card-wrapper">
+  <header class="sea-article-header">
+    <h1 class="sea-article-title">Rust初步了解</h1>
+    
+      <div class="sea-post-meta sea-post-meta__center">
+        <div class="sea-post-time">
+  <i class="sea-font">date</i>
+  <time datetime="2024-09-23T01:10:12.000Z">2024-09-23</time>
+</div>
+        
+  <div class="sea-post-categories">
+    <i class="sea-font">folder</i>
+    <a class="category-link" href="/categories/Rust/">Rust</a>
+  </div>
+
+        
+      </div>
+    
+  </header>
+  <div class="sea-article-content sea-doc">
+    <h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>Rustup 是 Rust 安装器和版本管理工具。官方网站 <a target="_blank" rel="noopener" href="https://www.rust-lang.org/">https://www.rust-lang.org</a></p>
+<p>windows 安装 rustup 提示</p>
+<p><code>Rust Visual C++ prerequisites Rust requires a linker and Windows API libraries but they don&#39;t seem to be available. These components can be acquired through a Visual Studio installer.</code></p>
+<p>因为在 Windows 上，Rust 需要某些 C++ 生成工具。<br>怎么解决：安装 <a target="_blank" rel="noopener" href="https://visualstudio.microsoft.com/visual-cpp-build-tools/">Visual Studio C++ Build tools</a></p>
+<p>安装教程微软：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/dev-environment/rust/setup">在 Windows 上针对 Rust 设置开发环境</a></p>
+<p>安装完 VSC++ Build tools 再安装 rustup-init.exe</p>
+<p><code>Rustup metadata and toolchains will be installed into the Rustup home directory, located at:C:\Users\90986\.rustup This can be modified with the RUSTUP_HOME environment variable.</code></p>
+<p><code>The Cargo home directory is located at:C:\Users\90986\.cargo This can be modified with the CARGO_HOME environment variable.</code></p>
+<p><code>The cargo, rustc, rustup and other commands will be added to Cargo&#39;s bin directory, located at:C:\Users\90986\.cargo\bin This path will then be added to your PATH environment variable by modifying the HKEY_CURRENT_USER/Environment/PATH registry key.</code></p>
+<p>Current installation options:<br>default host triple: x86_64-pc-windows-msvc<br>default toolchain: stable (default)<br>profile: default<br>modify PATH variable: yes</p>
+<p>stable-x86_64-pc-windows-msvc installed - rustc 1.81.0 (eeb90cda1 2024-09-04)</p>
+<p>安装成功：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\90986&gt; rustc --version</span><br><span class="line">rustc 1.81.0 (eeb90cda1 2024-09-04)</span><br><span class="line">PS C:\Users\90986&gt; cargo --version</span><br><span class="line">cargo 1.81.0 (2dbb1af80 2024-08-20)</span><br></pre></td></tr></table></figure>
+
+<p>cargo new hello_rust 生成一个基本的Rust项目结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.git</span><br><span class="line">src</span><br><span class="line">.gitignore &gt; main.rs</span><br><span class="line">Cargo.toml</span><br></pre></td></tr></table></figure>
+
+<h2 id="Rust-语言特点"><a href="#Rust-语言特点" class="headerlink" title="Rust 语言特点"></a>Rust 语言特点</h2><ol>
+<li>可以编译可靠且高效的系统软件</li>
+<li>可替代C&#x2F;C++系统软件语言，且保证了内存安全</li>
+<li>没有大型运行时或垃圾回收器</li>
+<li>在性能、安全性和实现表达式之间达到了独特的平衡</li>
+<li>Rust 函数不支持可变数量的参数，而宏可以接受任意数量的参数</li>
+</ol>
+<h4 id="宏"><a href="#宏" class="headerlink" title="宏"></a>宏</h4><ol>
+<li>可变长度的参数：Rust 的函数不支持可变数量的参数（varargs），而宏可以接受任意数量的参数。</li>
+<li>编译时字符串检查：宏在编译时展开，这允许进行格式字符串的分析，包括检查提供的参数数量是否正确以及参数类型是否与格式说明符相匹配。</li>
+<li>性能优化：由于宏会在编译时被展开，编译器能够对结果代码进行优化。相比于运行时构建字符串并打印的函数，使用宏能够带来更好的性能。</li>
+<li>类型安全性：宏在编译时进行类型检查，而不是在运行时。这保证了类型安全，增加了灵活性，有助于预防一些安全风险，比如格式化字符串攻击。</li>
+<li>参数传递引用：宏传递的参数是引用，不会因为实际上没有执行而导致性能损失。</li>
+<li>Rust 中使用宏实现打印语句是因为宏在编译时能提供灵活性、类型安全与性能的独特结合，这样的特质很难通过普通函数调用来实现。</li>
+<li>Rust 标准库在许多其他地方也广泛地使用宏。</li>
+</ol>
+<h4 id="内存安全："><a href="#内存安全：" class="headerlink" title="内存安全："></a>内存安全：</h4><p>Rust 所有权系统和借用检查器确保了程序在编译时就能够捕获大多数内存错误。<br>所有权系统是Rust最独特和最重要的特性之一。它允许Rust在不需要垃圾收集的情况下保证内存安全。理解所有权对于掌握Rust至关重要。</p>
+<p>所有权规则：</p>
+<ol>
+<li>Rust每一个值都有一个被称为其所有者的变量。</li>
+<li>值在任一时刻有且仅有一个所有者。</li>
+<li>当所有者（变量）离开作用域，这个值将被丢弃。</li>
+</ol>
+<h4 id="并发无忧："><a href="#并发无忧：" class="headerlink" title="并发无忧："></a>并发无忧：</h4><p>Rust 类型系统和线程模型消除了数据竞争，使并发编程变得更加安全。</p>
+<h4 id="零成本抽象："><a href="#零成本抽象：" class="headerlink" title="零成本抽象："></a>零成本抽象：</h4><p>Rust 允许你使用高级抽象，而不牺牲运行时性能。</p>
+<h4 id="跨平台："><a href="#跨平台：" class="headerlink" title="跨平台："></a>跨平台：</h4><p>Rust 可以编译到多种目标平台，包括嵌入式系统。</p>
+<p>Rust 能够创建具有高输出和高性能的去中心化程序，这是大规模DApp必不可少的功能。</p>
+<p>参考文章：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/RioTian/p/18145045">Rust | 秒懂 println! 的超实用格式化技巧</a></p>
+
+  </div>
+
+  
+    
+  <div class="sea-prev-next-wrapper">
+    
+      <div class="prev">
+        <span>←</span>
+        <a class="link" href="/2024/09/24/DApp%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3/">
+          Web3 - Decentralized Application
+        </a>
+      </div>
+    
+    
+      <div class="next">
+        <a class="link" href="/2024/09/06/%E7%8B%AC%E7%AB%8B%E7%AB%99%E7%9A%84%E6%A8%A1%E5%BC%8F/">
+          跨境独立站 - 经营和变现模式
+        </a>
+        <span>→</span>
+      </div>
+    
+  </div>
+
+  
+</article>
+
+
+  </main>
+  <footer id="sea-footer-container">
+  <div class="sea-footer-row">
+    <div class="sea-footer-menu-link">
+      
+    </div>
+  </div>
+  
+  
+  <div class="sea-footer-row">
+    <div class="sea-footer-copyright">
+      <span>©</span>
+      
+        2024
+      
+      <span>·</span>
+      胡飞 | 个人博客 | 温故知新
+    </div>
+  </div>
+</footer>
+  <div class="sea-menu-mobile-wrap">
+  <div class="sea-menu-mobile-inner">
+    
+      <a
+        class="sea-menu-link"
+        
+        href="/categories/web3/"
+      >
+        🌐 Web3.0
+      </a>
+    
+      <a
+        class="sea-menu-link"
+        
+        href="/categories/rust/"
+      >
+        🌾 Rust
+      </a>
+    
+      <a
+        class="sea-menu-link"
+        
+        href="/catalog/"
+      >
+        🌿 其他
+      </a>
+    
+      <a
+        class="sea-menu-link"
+        
+        href="/tags/"
+      >
+        🍁 所有标签
+      </a>
+    
+  </div>
+</div>
+<div id="sea-mobile-nav-dimmer"></div>
+  <div class="sea-float-tools-wrapper">
+  
+  <a class="sea-float-tools-btn" id="sea-back-to-top" href="#">
+    <i class="sea-font">arrow-up</i>
+  </a>
+
+  
+  
+
+  
+  <div class="sea-float-tools-btn" id="sea-theme-mode">
+    <i class="sea-font">theme</i>
+
+    <ul class="sea-theme-select-box">
+      <li class="sea-theme-select-item" id="sea-theme-auto">System</li>
+      <li class="sea-theme-select-item" id="sea-theme-light">Light</li>
+      <li class="sea-theme-select-item" id="sea-theme-dark">Dark</li>
+    </ul>
+  </div>
+</div>
+
+  
+<script src="/js/theme.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</body>
+</html>
