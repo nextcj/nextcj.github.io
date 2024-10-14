@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Rust笔记 | 博客</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="">
+
+  <link rel="stylesheet" href="https://unpkg.com/lxgw-wenkai-screen-webfont@1.7.0/lxgwwenkaiscreen.css">
+
+  
+  
+<link rel="stylesheet" href="/fonts/sea-font.css">
+
+
+  
+  
+<link rel="stylesheet" href="/css/main.css">
+
+
+  
+  <meta name="description" content="Cargo &gt;可以使用 cargo new 创建项目。可以使用 cargo build 构建项目。可以使用 cargo run 一步构建并运行项目。可以使用 cargo check 在不生成二进制文件的情况下构建项目来检查错误。有别于将构建结果放在与源码相同的目录，Cargo 会将其放到 target&#x2F;debug 目录。 cargo build –release 在 target&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rust笔记">
+<meta property="og:url" content="http://example.com/2024/09/25/Rust%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="博客">
+<meta property="og:description" content="Cargo &gt;可以使用 cargo new 创建项目。可以使用 cargo build 构建项目。可以使用 cargo run 一步构建并运行项目。可以使用 cargo check 在不生成二进制文件的情况下构建项目来检查错误。有别于将构建结果放在与源码相同的目录，Cargo 会将其放到 target&#x2F;debug 目录。 cargo build –release 在 target&amp;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-09-25T01:10:12.000Z">
+<meta property="article:modified_time" content="2024-10-14T09:20:23.652Z">
+<meta property="article:author" content="胡飞 | 个人博客 | 温故知新">
+<meta name="twitter:card" content="summary">
+
+  <style>
+    :root {
+      --sea-color-primary: #10b981;
+    }
+  </style>
+
+  
+<script src="/js/global.js"></script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+<body>
+  <header class="sea-header">
+    <nav class="sea-nav-wrap">
+  <h1 class="sea-nav-logo" title="胡飞 | 温故知新">
+    <a href="/">博客</a>
+  </h1>
+  <div class="sea-nav-menus">
+    <div class="sea-menu-pc-wrap">
+  
+    <a
+      class="sea-menu-link"
+      
+      href="/categories/Web3/"
+    >
+      🌐 Web3.0
+    </a>
+  
+    <a
+      class="sea-menu-link"
+      
+      href="/categories/Solana/"
+    >
+      🔭 Solana
+    </a>
+  
+    <a
+      class="sea-menu-link"
+      
+      href="/categories/Rust/"
+    >
+      🌾 Rust
+    </a>
+  
+    <a
+      class="sea-menu-link"
+      
+      href="/catalog/"
+    >
+      🌿 其他
+    </a>
+  
+    <a
+      class="sea-menu-link"
+      
+      href="/tags/"
+    >
+      🍁 所有标签
+    </a>
+  
+</div>
+
+    <div id="sea-mobile-nav-toggle">
+      <i class="sea-font">bars</i>
+    </div>
+  </div>
+</nav>
+  </header>
+  <main id="sea-main-wrapper">
+    <article class="sea-page-card-wrapper">
+  <header class="sea-article-header">
+    <h1 class="sea-article-title">Rust笔记</h1>
+    
+      <div class="sea-post-meta sea-post-meta__center">
+        <div class="sea-post-time">
+  <i class="sea-font">date</i>
+  <time datetime="2024-09-25T01:10:12.000Z">2024-09-25</time>
+</div>
+        
+  <div class="sea-post-categories">
+    <i class="sea-font">folder</i>
+    <a class="category-link" href="/categories/Rust/">Rust</a>
+  </div>
+
+        
+      </div>
+    
+  </header>
+  <div class="sea-article-content sea-doc">
+    <h2 id="Cargo"><a href="#Cargo" class="headerlink" title="Cargo &gt;"></a>Cargo &gt;</h2><p>可以使用 cargo new 创建项目。<br>可以使用 cargo build 构建项目。<br>可以使用 cargo run 一步构建并运行项目。<br>可以使用 cargo check 在不生成二进制文件的情况下构建项目来检查错误。<br>有别于将构建结果放在与源码相同的目录，Cargo 会将其放到 target&#x2F;debug 目录。</p>
+<p>cargo build –release 在 target&#x2F;release 而不是 target&#x2F;debug 下生成可执行文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 要在任何已存在的项目上工作时，可以使用如下命令</span><br><span class="line">// 通过 Git 检出代码，移动到该项目目录并构建：</span><br><span class="line">$ git clone example.org/someproject</span><br><span class="line">$ cd someproject</span><br><span class="line">$ cargo build</span><br></pre></td></tr></table></figure>
+
+<h2 id="了解-Rust-的第一个程序"><a href="#了解-Rust-的第一个程序" class="headerlink" title="了解 Rust 的第一个程序 &gt;"></a>了解 Rust 的第一个程序 &gt;</h2><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> rand::Rng;</span><br><span class="line"><span class="keyword">use</span> std::cmp::Ordering;</span><br><span class="line"><span class="keyword">use</span> std::io;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Guess the number!&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> <span class="variable">secret_number</span> = rand::<span class="title function_ invoke__">thread_rng</span>().<span class="title function_ invoke__">gen_range</span>(<span class="number">1</span>..=<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">loop</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;Please input your guess.&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">guess</span> = <span class="type">String</span>::<span class="title function_ invoke__">new</span>();</span><br><span class="line"></span><br><span class="line">        io::<span class="title function_ invoke__">stdin</span>()</span><br><span class="line">            .<span class="title function_ invoke__">read_line</span>(&amp;<span class="keyword">mut</span> guess)</span><br><span class="line">            .<span class="title function_ invoke__">expect</span>(<span class="string">&quot;Failed to read line&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> <span class="variable">guess</span>: <span class="type">u32</span> = <span class="keyword">match</span> guess.<span class="title function_ invoke__">trim</span>().<span class="title function_ invoke__">parse</span>() &#123;</span><br><span class="line">            <span class="title function_ invoke__">Ok</span>(num) =&gt; num,</span><br><span class="line">            <span class="title function_ invoke__">Err</span>(_) =&gt; <span class="keyword">continue</span>,</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;You guessed: &#123;guess&#125;&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">match</span> guess.<span class="title function_ invoke__">cmp</span>(&amp;secret_number) &#123;</span><br><span class="line">            Ordering::Less =&gt; <span class="built_in">println!</span>(<span class="string">&quot;Too small!&quot;</span>),</span><br><span class="line">            Ordering::Greater =&gt; <span class="built_in">println!</span>(<span class="string">&quot;Too big!&quot;</span>),</span><br><span class="line">            Ordering::Equal =&gt; &#123;</span><br><span class="line">                <span class="built_in">println!</span>(<span class="string">&quot;You win!&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="变量和常量"><a href="#变量和常量" class="headerlink" title="变量和常量 &gt;"></a>变量和常量 &gt;</h2><p>let &#x2F; let mut<br>我们不能改变变量的类型<br>mut 与隐藏的区别是，当再次使用 let 时，实际上创建了一个新变量，我们可以改变值的类型，并且复用这个名字。隐藏有作用域。</p>
+<p>声明常量使用 const 关键字而不是 let，并且 必须 注明值的类型。<br>常量可以在任何作用域中声明，包括全局作用域，这在一个值需要被很多部分的代码用到时很有用。<br>最后一个区别是，常量只能被设置为常量表达式，而不可以是其他任何只能在运行时计算出的值。</p>
+<p><code>const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;</code></p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型 &gt;"></a>数据类型 &gt;</h2><p><strong>Rust 是 静态类型（statically typed）语言。</strong> 也就是说在编译时就必须知道所有变量的类型。</p>
+<p>在 Rust 中，每一个值都属于某一个 数据类型（data type），这告诉 Rust 它被指定为何种数据，以便明确数据处理方式。<br>两类数据类型子集：标量 (整型、浮点型、布尔类型和字符类型)和复合 (元组（tuple）和数组（array）)。</p>
+<p>元组：是一个将多个其他类型的值组合进一个复合类型的主要方式。元组长度固定：一旦声明，其长度不会增大或缩小。<br>我们使用包含在圆括号中的逗号分隔的值列表来创建一个元组。元组中的每一个位置都有一个类型，而且这些不同值的类型也不必是相同的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fn main() &#123;</span><br><span class="line">    let tup = (500, 6.4, 1);</span><br><span class="line">    let (x, y, z) = tup;</span><br><span class="line">    println!(&quot;The value of y is: &#123;y&#125;&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>程序首先创建了一个元组并绑定到 tup 变量上。接着使用了 let 和一个模式将 tup 分成了三个不同的变量，x、y 和<br>z。这叫做 解构（destructuring），因为它将一个元组拆成了三个部分。</p>
+<p>与元组不同，数组中的每个元素的类型必须相同。Rust 中的数组与一些其他语言中的数组不同，Rust 中的数组长度是固定的。<br>我们将数组的值写成在方括号内，用逗号分隔。</p>
+<p><code>let months = [&quot;January&quot;, &quot;February&quot;, &quot;March&quot;, &quot;April&quot;, &quot;May&quot;, &quot;June&quot;, &quot;July&quot;, &quot;August&quot;, &quot;September&quot;, &quot;October&quot;, &quot;November&quot;, &quot;December&quot;];</code></p>
+<p><code>let a: [i32; 5] = [1, 2, 3, 4, 5]; let a = [3; 5]; // = let a = [3, 3, 3, 3, 3];</code><br>数组是可以在栈 (stack) 上分配的已知固定大小的单个内存块。可以使用索引来访问数组的元素。</p>
+<p>但是数组并不如 vector 类型灵活。vector 类型是标准库提供的一个 允许 增长和缩小长度的类似数组的集合类型。当不确定是应该使用数组还是<br>vector 的时候，那么很可能应该使用 vector。</p>
+<p>数组越界的操作的时候：索引超出了数组长度，Rust 会<br>panic。在很多底层语言中，并没有进行这类检查，这样当提供了一个不正确的索引时，就会访问无效的内存。通过立即退出而不是允许内存访问并继续执行，Rust<br>让你避开此类错误。<br>Rust 的错误处理机制会让你知道如何编写可读性强而又安全的代码，使程序既不会 panic 也不会导致非法内存访问。</p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串 &gt;"></a>字符串 &gt;</h2><p>字符串字面值，是被硬编码进程序里的字符串值，它们是不可变的。</p>
+<p>字符串数据类型 String 是管理被分配到堆上的数据，能够存储在编译时未知大小的文本。<br>可以使用 from 函数基于字符串子面值来创建String：<code>let s = String::from(&quot;hello&quot;);</code><br>:: 运算符，允许将 from 函数置于String类型的命名空间下。<br><code>s.push_str(&quot;, world!&quot;); // push_str() 在字符串后面添加字面值</code></p>
+<p>对于字符串字面值来说，我们在编译时就知道其内容，文本可硬编码进最终可执行文件，字符串字面值快速而高效。得益于字符串字面值的不可变性。</p>
+<p>对于 String 类型，支持一个可变的文本片段，需要在堆上分配一块在编译时未知大小的内存来存放内容。<br>String 必须在运行时向内存分配器请求内存。需要一个在我们处理完String时将内存返回给内存分配器的方法。</p>
+<p>在有GC的语言中，GC记录并清除不再使用的内存，程序员不需要关注它。没有GC机制的语言，识别出不再使用的内存，需要显示的去释放内存，如果忘记回收内存机会造成浪费，如果过早回收内存会造成无效变量，如果重复回收内存会导致BUG。需要精准的为一个<br>allocate 配对一个 free。</p>
+<p>Rust 不一样，内存在拥有它的变量离开作用域后就被自动释放。当变量离开作用域，Rust 为我们调用一个特殊的函数，这个函数叫做 drop。</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数 &gt;"></a>函数 &gt;</h2><p>Rust 代码中的函数和变量名使用 snake case 规范风格。在 snake case 中，所有字母都是小写并使用下划线分隔单词。</p>
+<p>在函数签名中，必须 声明每个参数的类型。这是 Rust<br>设计中一个经过慎重考虑的决定：要求在函数定义中提供类型注解，意味着编译器再也不需要你在代码的其他地方注明类型来指出你的意图。</p>
+<p>函数可以向调用它的代码返回值。我们并不对返回值命名，但要在箭头（-&gt;）后声明它的类型。在 Rust<br>中，函数的返回值等同于函数体最后一个表达式的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fn five() -&gt; i32 &#123; 5 &#125;</span><br><span class="line">fn main() &#123;</span><br><span class="line">    let x = five();</span><br><span class="line">    println!(&quot;The value of x is: &#123;x&#125;&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="所有权-Ownership"><a href="#所有权-Ownership" class="headerlink" title="所有权 Ownership &gt;"></a>所有权 Ownership &gt;</h2><p>所有权（系统）让 Rust 无需垃圾回收（garbage collector）即可保障内存安全，因此理解 Rust 中所有权如何工作是十分重要的。</p>
+<p>所有权（ownership）是 Rust 用于如何管理内存的一组规则。所有程序都必须管理其运行时使用计算机内存的方式。</p>
+<p>Rust 通过所有权系统管理内存，编译器在编译时会根据一系列的规则进行检查。如果违反了任何这些规则，程序都不能编译。在运行时，所有权系统的任何功能都不会减慢程序。</p>
+<p>栈和堆都是代码在运行时可供使用的内存，但是它们的结构不同。栈以放入值的顺序存储值并以相反顺序取出值。后进先出（last<br>in, first out）增加数据叫做 进栈（pushing onto the stack），而移出数据叫做 出栈（popping off the stack）。</p>
+<p>栈中的所有数据都必须占用已知且固定的大小。在编译时大小未知或大小可能变化的数据，要改为存储在堆上。</p>
+<p>堆是缺乏组织的：当向堆放入数据时，你要请求一定大小的空间。内存分配器（memory<br>allocator）在堆的某处找到一块足够大的空位，把它标记为已使用，并返回一个表示该位置地址的<br>指针（pointer）。这个过程称作 在堆上分配内存（allocating on the heap），有时简称为<br>“分配”（allocating）。（将数据推入栈中并不被认为是分配）。</p>
+<p>入栈比在堆上分配内存要快，因为（入栈时）分配器无需为存储新数据去搜索内存空间；其位置总是在栈顶。相比之下，在堆上分配内存则需要更多的工作，这是因为分配器必须首先找到一块足够存放数据的内存空间，并接着做一些记录为下一次分配做准备。</p>
+<p>访问堆上的数据比访问栈上的数据慢，因为必须通过指针来访问。现代处理器在内存中跳转越少就越快（缓存）。</p>
+<p>当你的代码调用一个函数时，传递给函数的值（包括可能指向堆上数据的指针）和函数的局部变量被压入栈中。当函数结束时，这些值被移出栈。</p>
+<p>跟踪哪部分代码正在使用堆上的哪些数据，最大限度的减少堆上的重复数据的数量，以及清理堆上不再使用的数据确保不会耗尽空间，这些问题正是所有权系统要处理的。所有权的主要目的就是管理堆数据。</p>
+<p><strong>所有权的规则</strong> &gt;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Rust 中的每一个值都有一个 所有者（owner）。</span><br><span class="line">值在任一时刻有且只有一个所有者。</span><br><span class="line">当所有者（变量）离开作用域，这个值将被丢弃。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let mut s = String::from(&quot;hello&quot;);</span><br><span class="line">s.push_str(&quot;, world!&quot;); // push_str() 在字符串后追加字面值</span><br><span class="line">println!(&quot;&#123;&#125;&quot;, s); // 将打印 `hello, world!`</span><br></pre></td></tr></table></figure>
+
+<p>将值传递给函数与给变量赋值的原理相似。向函数传递值可能会移动或者复制，就像赋值语句一样。</p>
+<p>变量的所有权总是遵循相同的模式：将值赋给另一个变量时移动它。<br>当持有堆中数据值的变量离开作用域时，其值将通过 drop 被清理掉，除非数据被移动为另一个变量所有。</p>
+<p>我们可以使用元组来返回多个值。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">fn main() &#123;</span><br><span class="line">    let s1 = String::from(&quot;hello&quot;);</span><br><span class="line"></span><br><span class="line">    let (s2, len) = calculate_length(s1);</span><br><span class="line"></span><br><span class="line">    println!(&quot;The length of &#x27;&#123;&#125;&#x27; is &#123;&#125;.&quot;, s2, len);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn calculate_length(s: String) -&gt; (String, usize) &#123;</span><br><span class="line">    let length = s.len(); // len() 返回字符串的长度</span><br><span class="line"></span><br><span class="line">    (s, length)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所有权以及相关功能：</p>
+<p><strong>借用（borrowing）</strong> &gt;<br>&amp;<br>我们将创建一个引用的行为称为 借用（borrowing）。<br>当引用停止使用时并不丢弃引用指向的数据，因为引用并没有所有权。<br>当函数使用引用而不是实际值作为参数，无需返回值来交还所有权，因为就不曾拥有所有权。<br>正如现实生活中，如果一个人拥有某样东西，你可以从他那里借来。当你使用完毕，必须还回去。我们并不拥有它。<br>正如变量默认是不可变的，引用也一样。（默认）不允许修改引用的值。</p>
+<p>&amp;mut<br>可变引用有一个很大的限制：如果你有一个对该变量的可变引用，你就不能再创建对该变量的引用。<br>防止同一时间对同一数据存在多个可变引用。<br>这个限制的好处是 Rust 可以在编译时就避免数据竞争。</p>
+<p>数据竞争（data race）类似于竞态条件，它可由这三个行为造成：</p>
+<ol>
+<li>两个或更多指针同时访问同一数据。</li>
+<li>至少有一个指针被用来写入数据。</li>
+<li>没有同步数据访问的机制。</li>
+</ol>
+<p>数据竞争会导致未定义行为，难以在运行时追踪，并且难以诊断和修复；Rust 避免了这种情况的发生，因为它甚至不会编译存在数据竞争的代码！</p>
+<p>也 不能在拥有不可变引用的同时拥有可变引用。</p>
+<p>在具有指针的语言中，很容易通过释放内存时保留指向它的指针而错误地生成一个 悬垂指针（dangling pointer），<br>所谓悬垂指针是其指向的内存可能已经被分配给其它持有者。</p>
+<p>相比之下，在 Rust 中编译器确保引用永远也不会变成悬垂状态：当你拥有一些数据的引用，编译器确保数据不会在其引用之前离开作用域。</p>
+<p>对引用的概述：</p>
+<ul>
+<li>在任意给定时间，要么 只能有一个可变引用，要么 只能有多个不可变引用。</li>
+<li>引用必须总是有效的。</li>
+</ul>
+<p><strong>slice</strong> &gt;</p>
+<p>slice 允许你引用集合中一段连续的元素序列，而不用引用整个集合。slice 是一种引用，所以它没有所有权。</p>
+<p>字符串 slice（string slice）是 String 中一部分值的引用，它看起来像这样：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let s = String::from(&quot;hello world&quot;);</span><br><span class="line"></span><br><span class="line">let hello = &amp;s[0..5];</span><br><span class="line">let world = &amp;s[6..11];</span><br></pre></td></tr></table></figure>
+
+<p>所有权、借用和 slice 这些概念让 Rust 程序在编译时确保内存安全。<br>拥有数据所有者在离开作用域后自动清除其数据的功能意味着你无须额外编写和调试相关的控制代码。</p>
+<h2 id="Option-枚举"><a href="#Option-枚举" class="headerlink" title="Option 枚举 &gt;"></a>Option 枚举 &gt;</h2><p>消除了错误地假设一个非空值的风险，会让你对代码更加有信心。为了拥有一个可能为空的值，你必须要显式的将其放入对应类型的 Option<T> 中。<br>接着，当使用这个值时，必须明确的处理值为空的情况。只要一个值不是 Option<T> 类型，你就 可以 安全的认定它的值不为空。<br>这是 Rust 的一个经过深思熟虑的设计决策，来限制空值的泛滥以增加 Rust 代码的安全性。</p>
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型 &gt;"></a>泛型 &gt;</h2><p>允许我们使用一个可以代表多种类型的占位符来替换特定类型，以减少代码的冗余。<br>高效处理重复概念的工具。<br>是具体类型或其他属性的抽象替代。<br>Optino<T>、 HashMap&lt;K,V&gt;、Vec<T>、Result&lt;T,E&gt;</p>
+<p>如果要在函数体中使用参数，就必须在函数签名中声明它的名字，好让编译器知道这个名字指代的是什么。<br><code>fn largest&lt;T&gt;(list: &amp;[T]) -&gt; &amp;T &#123;</code><br>函数 largest 有泛型类型 T。它有个参数 list，其类型是元素为 T 的 slice。largest 函数会返回一个与 T 相同类型的引用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">enum Option&lt;T&gt; &#123;</span><br><span class="line">Some(T),</span><br><span class="line">None,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">enum Result&lt;T, E&gt; &#123;</span><br><span class="line">    Ok(T),</span><br><span class="line">    Err(E),</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>编译时将泛型定义替换为具体的定义<br>单态化过程是 Rust 泛型在运行时极其高效的原因</p>
+<h2 id="Trait"><a href="#Trait" class="headerlink" title="Trait &gt;"></a>Trait &gt;</h2><p>定义泛型的方法。<br>定义了某个特定类型拥有可能与其他类型共享的功能。<br>通过 trait 以一种抽象的方式定义共同行为。<br>可以与泛型结合，将泛型限制为只接受拥有特定行为的类型，而不是任意类型。<br>trait 类似于其他语言中的常被称为 接口（interfaces）的功能。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">pub trait Summary &#123;</span><br><span class="line">fn summarize(&amp;self) -&gt; String;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">pub struct NewsArticle &#123;</span><br><span class="line">pub headline: String,</span><br><span class="line">pub location: String,</span><br><span class="line">pub author: String,</span><br><span class="line">pub content: String,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">impl Summary for NewsArticle &#123;</span><br><span class="line">fn summarize(&amp;self) -&gt; String &#123;</span><br><span class="line">format!(&quot;&#123;&#125;, by &#123;&#125; (&#123;&#125;)&quot;, self.headline, self.author, self.location)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="生命周期-lifetimes"><a href="#生命周期-lifetimes" class="headerlink" title="生命周期 lifetimes &gt;"></a>生命周期 lifetimes &gt;</h2><p>是一类允许我们向编译器提供引用如何相互关联的泛型。<br>生命周期的功能：允许在很多场景借用值的同时，仍然可以使编译器能够检查这些引用的有效性。</p>
+<p>生命周期确保引用在预期内一直有效。<br>Rust 中的每一个引用都有其 生命周期（lifetime），也就是引用保持有效的作用域。<br>确保运行时实际使用的引用绝对是有效的。<br>生命周期的主要目标是避免悬垂引用（dangling references）。</p>
+<p>函数返回的引用的生命周期应该与传入参数的生命周期中较短那个保持一致。</p>
+<p>生命周期语法是用于将函数的多个参数与其返回值的生命周期进行关联的。一旦它们形成了某种关联，Rust 就有了足够的信息来允许内存安全的操作并阻止会产生悬垂指针亦或是违反内存安全的行为。</p>
+<p>函数或方法的参数的生命周期被称为 输入生命周期（input lifetimes），而返回值的生命周期被称为 输出生命周期（output lifetimes）。</p>
+<p>每个引用参数都有其自己的生命周期。</p>
+<p>静态生命周期 ‘static 生命周期能够存活于整个程序期间。</p>
+
+  </div>
+
+  
+    
+  <div class="sea-prev-next-wrapper">
+    
+      <div class="prev">
+        <span>←</span>
+        <a class="link" href="/2024/09/30/Solana%E5%92%8C%E4%BB%A5%E5%A4%AA%E5%9D%8A%E7%9A%84%E4%B8%8D%E5%90%8C%E7%82%B9/">
+          Solana和以太坊的不同点
+        </a>
+      </div>
+    
+    
+      <div class="next">
+        <a class="link" href="/2024/09/24/Rust%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3/">
+          Rust了解
+        </a>
+        <span>→</span>
+      </div>
+    
+  </div>
+
+  
+</article>
+
+
+  </main>
+  <footer id="sea-footer-container">
+  <div class="sea-footer-row">
+    <div class="sea-footer-menu-link">
+      
+    </div>
+  </div>
+  
+  
+  <div class="sea-footer-row">
+    <div class="sea-footer-copyright">
+      <span>©</span>
+      
+        2024
+      
+      <span>·</span>
+      胡飞 | 个人博客 | 温故知新
+    </div>
+  </div>
+</footer>
+  <div class="sea-menu-mobile-wrap">
+  <div class="sea-menu-mobile-inner">
+    
+      <a
+        class="sea-menu-link"
+        
+        href="/categories/Web3/"
+      >
+        🌐 Web3.0
+      </a>
+    
+      <a
+        class="sea-menu-link"
+        
+        href="/categories/Solana/"
+      >
+        🔭 Solana
+      </a>
+    
+      <a
+        class="sea-menu-link"
+        
+        href="/categories/Rust/"
+      >
+        🌾 Rust
+      </a>
+    
+      <a
+        class="sea-menu-link"
+        
+        href="/catalog/"
+      >
+        🌿 其他
+      </a>
+    
+      <a
+        class="sea-menu-link"
+        
+        href="/tags/"
+      >
+        🍁 所有标签
+      </a>
+    
+  </div>
+</div>
+<div id="sea-mobile-nav-dimmer"></div>
+  <div class="sea-float-tools-wrapper">
+  
+  <a class="sea-float-tools-btn" id="sea-back-to-top" href="#">
+    <i class="sea-font">arrow-up</i>
+  </a>
+
+  
+  
+
+  
+  <div class="sea-float-tools-btn" id="sea-theme-mode">
+    <i class="sea-font">theme</i>
+
+    <ul class="sea-theme-select-box">
+      <li class="sea-theme-select-item" id="sea-theme-auto">System</li>
+      <li class="sea-theme-select-item" id="sea-theme-light">Light</li>
+      <li class="sea-theme-select-item" id="sea-theme-dark">Dark</li>
+    </ul>
+  </div>
+</div>
+
+  
+<script src="/js/theme.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</body>
+</html>
